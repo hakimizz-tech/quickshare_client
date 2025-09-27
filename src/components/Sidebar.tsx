@@ -15,7 +15,10 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-// Presentation-only component for the search bar and animated extension list
+/**
+ * Presentation-only component for the search bar and animated extension list.
+ * Receives a list of supported file extensions and renders the UI.
+ */
 const SidebarContent = ({ extensions }: { extensions: string[] }) => {
   const listWrapperRef = useRef<HTMLDivElement | null>(null)
 
@@ -84,7 +87,10 @@ const SidebarContent = ({ extensions }: { extensions: string[] }) => {
   )
 }
 
-// Interactive sidebar shell: loads extension data, handles GSAP drawer motion, and renders layouts
+/**
+ * Interactive sidebar shell: loads extension data, handles GSAP drawer motion,
+ * and renders the adaptive layouts for desktop and mobile.
+ */
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
   const drawerRef = useRef<HTMLDivElement | null>(null)

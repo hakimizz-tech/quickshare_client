@@ -7,6 +7,7 @@ import { toast } from "sonner"
 import { uploadFormSchema, type UploadFormValues } from "@/lib/schema"
 import { useResumableUploader, DEFAULT_CHUNK_SIZE } from "@/lib/hooks/useResumableUploader"
 import { Progress } from "@/components/ui/progress"
+import UploadProgressHUD from "@/components/UploadProgressHUD"
 
 /**
  * Drag-and-drop upload form that validates file metadata with React Hook Form + Zod
@@ -201,7 +202,6 @@ function UploadForm() {
       setDownloadUrl(outcome.downloadUrl)
       toast.success("Upload complete! Your download link is ready.")
     } catch (error) {
-      // The hook already exposes the error state for UI display; optional console for debugging.
       if (import.meta.env.DEV) {
         console.error("Upload failed", error)
       }
@@ -210,28 +210,29 @@ function UploadForm() {
   })
 
   return (
-    <div className="mt-10 flex flex-col items-center gap-6 md:items-start">
-      {/* Dropzone that handles drag-and-drop interactions and previews the chosen file */}
+    <div className="mt-6 md:mt-10 flex flex-col items-center gap-6 md:items-start animate-fade-in-up">
+      {/* Dropzone */}
       <div
-        className={`flex w-full max-w-md flex-col items-center justify-center rounded-[10px] border border-black bg-[#F3E9E9] p-6 text-center transition ${isDragActive ? "border-dashed" : ""}`}
+        className={`flex w-full max-w-md flex-col items-center justify-center rounded-[10px] border border-black dark:border-white bg-white dark:bg-black p-6 text-center transition ${isDragActive ? "border-dashed" : ""}`}
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        aria-label="File upload dropzone"
       >
         {files.length === 0 ? (
           <>
-            <CloudUpload className="h-[200px] w-[200px] text-black" strokeWidth={1.2} />
-            <span className="mt-4 text-xl font-semibold text-black">Drag &amp; Drop</span>
-            <p className="mt-2 text-sm text-black/70">Allowing users to drag and drop files</p>
+            <CloudUpload className="h-[200px] w-[200px] text-black dark:text-white animate-float" strokeWidth={1.2} />
+            <span className="mt-4 text-xl font-semibold text-black dark:text-white">Drag &amp; Drop</span>
+            <p className="mt-2 text-sm text-black/70 dark:text-white/70">Allowing users to drag and drop files</p>
           </>
         ) : (
-          <div className="flex flex-col items-center gap-2 text-black">
-            <FileIcon className="h-16 w-16 text-black" strokeWidth={1.4} />
+          <div className="flex flex-col items-center gap-2 text-black dark:text-white">
+            <FileIcon className="h-16 w-16 text-black dark:text-white" strokeWidth={1.4} />
             <span className="text-lg font-semibold">Selected file</span>
-            <p className="max-w-full break-words text-sm text-black/80">{files[0].name}</p>
+            <p className="max-w-full break-words text-sm text-black/80 dark:text-white/80">{files[0].name}</p>
             {files.length > 1 && (
-              <p className="text-xs text-black/60">+ {files.length - 1} more file(s)</p>
+              <p className="text-xs text-black/60 dark:text-white/60">+ {files.length - 1} more file(s)</p>
             )}
           </div>
         )}
@@ -242,8 +243,8 @@ function UploadForm() {
         <input ref={fileInputRef} type="file" className="hidden" onChange={handleInputChange} />
       </form>
 
-      {/* Validation messages give quick feedback after schema checks */}
-      <div className="w-full max-w-md text-sm text-red-600">
+      {/* Validation messages */}
+      <div className="w-full max-w-md text-sm text-red-600 space-y-1">
         {errors.fileName?.message && <p>{errors.fileName.message}</p>}
         {!errors.fileName?.message && (errors.totalSize?.message || errors.totalChunks?.message) && (
           <p>{errors.totalSize?.message ?? errors.totalChunks?.message}</p>
@@ -252,17 +253,17 @@ function UploadForm() {
         {uploadError && <p>{uploadError}</p>}
       </div>
 
-      {/* Upload progress and result feedback */}
+      {/* Upload progress and result */}
       {(progress || downloadUrl) && (
-  <div className="w-full max-w-md space-y-4 text-sm text-black" aria-live="polite">
+        <div className="w-full max-w-md space-y-4 text-sm text-black dark:text-white" aria-live="polite">
           {progress && (
-            <div className="space-y-2 rounded-lg border border-black/10 bg-white p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs font-medium uppercase tracking-wide text-black/60">
+            <div className="space-y-2 rounded-lg border border-black/10 dark:border-white/15 bg-white dark:bg-black p-4 shadow-sm">
+              <div className="flex items-center justify-between text-xs font-medium uppercase tracking-wide text-black/60 dark:text-white/60">
                 <span>{progress.percentage >= 100 ? "Finalising" : "Uploading"}</span>
                 <span>{Math.round(progress.percentage)}%</span>
               </div>
               <Progress value={progress.percentage} className="h-3" />
-              <div className="flex items-center justify-between text-xs text-black/60">
+              <div className="flex items-center justify-between text-xs text-black/60 dark:text-white/60">
                 <span>Uploaded</span>
                 <span>
                   {compactNumberFormatter.format(progress.uploadedBytes)} / {compactNumberFormatter.format(progress.totalBytes)}
@@ -271,22 +272,19 @@ function UploadForm() {
             </div>
           )}
           {downloadUrl && (
-            /* Success state: display the generated download URL with an affordance to copy it. */
-            <div className="space-y-3 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800 shadow-sm">
+            <div className="space-y-3 rounded-lg border border-black/10 dark:border-white/15 bg-white dark:bg-black p-4 text-black dark:text-white shadow-sm">
               <p className="text-sm font-medium">Upload complete! Share your link below:</p>
-              {/* Read-only text box mirrors the live download URL so users can review it. */}
               <div className="flex items-center gap-2">
                 <input
                   type="text"
                   value={downloadUrl}
                   readOnly
-                  className="flex-1 truncate rounded-md border border-green-200 bg-white/80 px-3 py-2 text-sm text-green-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400/60"
+                  className="flex-1 truncate rounded-md border border-black/15 dark:border-white/20 bg-white/90 dark:bg-black/50 px-3 py-2 text-sm text-black dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-black/40 dark:focus:ring-white/40"
                 />
-                {/* Copy button triggers the clipboard helper to store the link. */}
                 <button
                   type="button"
                   onClick={handleCopyDownloadLink}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 bg-white/90 text-green-700 transition hover:bg-green-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-black/15 dark:border-white/20 bg-white/90 dark:bg-white/10 text-black dark:text-white transition hover:bg-black/5 dark:hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/60 dark:focus-visible:ring-white/60"
                   aria-label="Copy download link"
                 >
                   <Copy className="h-4 w-4" />
@@ -297,12 +295,12 @@ function UploadForm() {
         </div>
       )}
 
-      {/* Action buttons: trigger file picker or submit the validated metadata */}
-  <div className="flex w-full max-w-md flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
+      {/* Actions */}
+      <div className="flex w-full max-w-md flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
         <button
           type="button"
           onClick={handleSelectFile}
-          className="inline-flex items-center gap-2 rounded-[15px] bg-[#E3E3E3] px-4 py-2 text-sm font-medium text-black transition hover:bg-[#d8d8d8] focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40"
+          className="inline-flex items-center gap-2 rounded-[15px] bg-[#E3E3E3] dark:bg-white/10 px-4 py-2 text-sm font-medium text-black dark:text-white transition hover:bg-[#d8d8d8] dark:hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 dark:focus-visible:ring-white/40"
         >
           <CloudUpload className="h-5 w-5" strokeWidth={1.5} />
           Or,  click to select a file
@@ -313,7 +311,7 @@ function UploadForm() {
           form={formId}
           disabled={isSubmitting || isUploading || files.length === 0}
           aria-disabled={isSubmitting || isUploading || files.length === 0}
-          className="inline-flex items-center justify-center rounded-[15px] border border-black px-5 py-2 text-sm font-semibold text-black transition hover:bg-black hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 disabled:cursor-not-allowed disabled:border-black/40 disabled:text-black/50 disabled:hover:bg-transparent disabled:hover:text-black/50"
+          className="inline-flex items-center justify-center rounded-[15px] border border-black dark:border-white px-5 py-2 text-sm font-semibold text-black dark:text-white transition hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 dark:focus-visible:ring-white/40 disabled:cursor-not-allowed disabled:border-black/40 dark:disabled:border-white/30 disabled:text-black/50 dark:disabled:text-white/50 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent disabled:hover:text-black/50 dark:disabled:hover:text-white/50"
         >
           {isSubmitting || isUploading ? "Uploading…" : "Upload"}
         </button>
