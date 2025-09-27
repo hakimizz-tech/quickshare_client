@@ -37,37 +37,37 @@ function Home() {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 <li className="group rounded-2xl bg-white/80 dark:bg-black/80 p-4 shadow-sm ring-1 ring-black/10 dark:ring-white/10 hover:shadow-md transition animate-fade-in-up [animation-delay:120ms]">
                   <div className="flex items-start gap-3">
-                    <Rocket className="h-5 w-5 text-black/80 mt-0.5" />
+                    <Rocket className="h-5 w-5 text-black/80 dark:text-white/80 mt-0.5" />
                     <div>
-                      <h3 className="merriweather-heading text-lg text-black">Fast transfers</h3>
-                      <p className="metamorphous-regular text-sm text-black/70">Optimized for speed with resumable uploads.</p>
+                      <h3 className="merriweather-heading text-lg text-black dark:text-white">Fast transfers</h3>
+                      <p className="metamorphous-regular text-sm text-black/70 dark:text-white/70">Optimized for speed with resumable uploads.</p>
                     </div>
                   </div>
                 </li>
-                <li className="group rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-black/10 hover:shadow-md transition animate-fade-in-up [animation-delay:200ms]">
+                <li className="group rounded-2xl bg-white/80 dark:bg-black/80 p-4 shadow-sm ring-1 ring-black/10 dark:ring-white/10 hover:shadow-md transition animate-fade-in-up [animation-delay:200ms]">
                   <div className="flex items-start gap-3">
-                    <Lock className="h-5 w-5 text-black/80 mt-0.5" />
+                    <Lock className="h-5 w-5 text-black/80 dark:text-white/80 mt-0.5" />
                     <div>
-                      <h3 className="merriweather-heading text-lg text-black">Private & secure</h3>
-                      <p className="metamorphous-regular text-sm text-black/70">Encrypted transport and unique share links.</p>
+                      <h3 className="merriweather-heading text-lg text-black dark:text-white">Private & secure</h3>
+                      <p className="metamorphous-regular text-sm text-black/70 dark:text-white/70">Encrypted transport and unique share links.</p>
                     </div>
                   </div>
                 </li>
-                <li className="group rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-black/10 hover:shadow-md transition animate-fade-in-up [animation-delay:280ms]">
+                <li className="group rounded-2xl bg-white/80 dark:bg-black/80 p-4 shadow-sm ring-1 ring-black/10 dark:ring-white/10 hover:shadow-md transition animate-fade-in-up [animation-delay:280ms]">
                   <div className="flex items-start gap-3">
-                    <Share2 className="h-5 w-5 text-black/80 mt-0.5" />
+                    <Share2 className="h-5 w-5 text-black/80 dark:text-white/80 mt-0.5" />
                     <div>
-                      <h3 className="merriweather-heading text-lg text-black">No accounts</h3>
-                      <p className="metamorphous-regular text-sm text-black/70">Start sharing instantly—no signup required.</p>
+                      <h3 className="merriweather-heading text-lg text-black dark:text-white">No accounts</h3>
+                      <p className="metamorphous-regular text-sm text-black/70 dark:text-white/70">Start sharing instantly—no signup required.</p>
                     </div>
                   </div>
                 </li>
-                <li className="group rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-black/10 hover:shadow-md transition animate-fade-in-up [animation-delay:360ms]">
+                <li className="group rounded-2xl bg-white/80 dark:bg-black/80 p-4 shadow-sm ring-1 ring-black/10 dark:ring-white/10 hover:shadow-md transition animate-fade-in-up [animation-delay:360ms]">
                   <div className="flex items-start gap-3">
-                    <Zap className="h-5 w-5 text-black/80 mt-0.5" />
+                    <Zap className="h-5 w-5 text-black/80 dark:text-white/80 mt-0.5" />
                     <div>
-                      <h3 className="merriweather-heading text-lg text-black">Reliable by design</h3>
-                      <p className="metamorphous-regular text-sm text-black/70">Resume from interruptions without losing progress.</p>
+                      <h3 className="merriweather-heading text-lg text-black dark:text-white">Reliable by design</h3>
+                      <p className="metamorphous-regular text-sm text-black/70 dark:text-white/70">Resume from interruptions without losing progress.</p>
                     </div>
                   </div>
                 </li>
@@ -76,24 +76,24 @@ function Home() {
 
             {/* Anchor targets for header links */}
             <section id="how-it-works" className="mt-16 md:mt-20 w-full max-w-3xl animate-fade-in-up [animation-delay:440ms]">
-              <h2 className="merriweather-heading text-2xl text-black mb-3">How it works</h2>
-              <p className="metamorphous-regular text-black/80 text-sm leading-relaxed">
+              <h2 className="merriweather-heading text-2xl text-black dark:text-white mb-3">How it works</h2>
+              <p className="metamorphous-regular text-black/80 dark:text-white/80 text-sm leading-relaxed">
                 Drag and drop your file or pick one from your device. We upload in small chunks so transfers
                 are fast and resilient. When it’s done, you’ll get a unique link you can share anywhere.
               </p>
             </section>
 
             <section id="security" className="mt-12 w-full max-w-3xl animate-fade-in-up [animation-delay:520ms]">
-              <h2 className="merriweather-heading text-2xl text-black mb-3">Security</h2>
-              <p className="metamorphous-regular text-black/80 text-sm leading-relaxed">
+              <h2 className="merriweather-heading text-2xl text-black dark:text-white mb-3">Security</h2>
+              <p className="metamorphous-regular text-black/80 dark:text-white/80 text-sm leading-relaxed">
                 Your files travel over secure connections and are stored behind protected endpoints. Only people
                 with your unique link can access the download.
               </p>
             </section>
 
             <section id="faqs" className="mt-12 w-full max-w-3xl animate-fade-in-up [animation-delay:600ms]">
-              <h2 className="merriweather-heading text-2xl text-black mb-3">FAQs</h2>
-              <ul className="space-y-2 text-sm text-black/80 metamorphous-regular">
+              <h2 className="merriweather-heading text-2xl text-black dark:text-white mb-3">FAQs</h2>
+              <ul className="space-y-2 text-sm text-black/80 dark:text-white/80 metamorphous-regular">
                 <li className="flex items-start gap-2"><ShieldCheck className="h-4 w-4 mt-1" /> Is there a file size limit? Large files are supported with chunked uploads.</li>
                 <li className="flex items-start gap-2"><Lock className="h-4 w-4 mt-1" /> Do I need an account? No, just upload and share your link.</li>
                 <li className="flex items-start gap-2"><Rocket className="h-4 w-4 mt-1" /> What if my connection drops? Uploads resume from where they left off.</li>
