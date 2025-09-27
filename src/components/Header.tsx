@@ -47,6 +47,7 @@ function Header() {
           >
             Start upload
           </a>
+          <ThemeToggle />
         </nav>
       </div>
 
