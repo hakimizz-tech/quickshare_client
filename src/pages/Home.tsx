@@ -1,6 +1,4 @@
-import backgroundImage from "@/assets/54521.png"
 import Header from "@/components/Header"
-import Sidebar from "@/components/Sidebar"
 import UploadForm from "@/components/UploadForm"
 import { Toaster } from "@/components/ui/sonner"
 import { ShieldCheck, Lock, Rocket, Share2, Zap } from "lucide-react"
