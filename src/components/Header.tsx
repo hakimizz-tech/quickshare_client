@@ -71,6 +71,9 @@ function Header() {
             >
               Start upload
             </a>
+            <div className="pt-2 flex justify-center">
+              <ThemeToggle />
+            </div>
           </div>
         </nav>
       )}
