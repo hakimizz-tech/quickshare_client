@@ -35,7 +35,7 @@ function Home() {
             {/* Value props */}
             <section className="mt-12 md:mt-16 w-full max-w-3xl">
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                <li className="group rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-black/10 hover:shadow-md transition animate-fade-in-up [animation-delay:120ms]">
+                <li className="group rounded-2xl bg-white/80 dark:bg-black/80 p-4 shadow-sm ring-1 ring-black/10 dark:ring-white/10 hover:shadow-md transition animate-fade-in-up [animation-delay:120ms]">
                   <div className="flex items-start gap-3">
                     <Rocket className="h-5 w-5 text-black/80 mt-0.5" />
                     <div>
