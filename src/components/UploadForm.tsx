@@ -7,6 +7,7 @@ import { toast } from "sonner"
 import { uploadFormSchema, type UploadFormValues } from "@/lib/schema"
 import { useResumableUploader, DEFAULT_CHUNK_SIZE } from "@/lib/hooks/useResumableUploader"
 import { Progress } from "@/components/ui/progress"
+import UploadProgressHUD from "@/components/UploadProgressHUD"
 
 /**
  * Drag-and-drop upload form that validates file metadata with React Hook Form + Zod
