@@ -18,14 +18,7 @@ function Header() {
   return (
     <header className="relative top-0 z-50 w-full bg-transparent">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
-        <a href="#" className="flex items-center gap-2 group">
-          <span className="rounded-full bg-white/80 dark:bg-white/10 p-2 text-black dark:text-white shadow-md">
-            <Share2 className="h-5 w-5 text-black dark:text-white group-hover:scale-105 transition" strokeWidth={1.8} />
-          </span>
-          <span className="merriweather-heading text-xl font-semibold text-black dark:text-white md:text-2xl">
-            QuickShare
-          </span>
-        </a>
+        <BrandLockup />
 
         <button
           type="button"
