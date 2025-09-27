@@ -10,16 +10,8 @@ import { ShieldCheck, Lock, Rocket, Share2, Zap } from "lucide-react"
  */
 function Home() {
   return (
-    <div className="relative min-h-screen bg-cover bg-center bg-no-repeat">
-      {/* Background image as media layer (no inline styles) */}
-      <img
-        src={backgroundImage}
-        alt="Soft abstract background"
-        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover"
-        aria-hidden="true"
-      />
-
-      <div className="min-h-[100vh] w-full bg-white/25 backdrop-blur-lg flex flex-col">
+    <div className="relative min-h-screen">
+      <div className="min-h-[100vh] w-full bg-white dark:bg-black transition-colors flex flex-col">
         <Header />
         <Toaster position="top-center" richColors closeButton />
 
