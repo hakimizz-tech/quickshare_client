@@ -1,5 +1,7 @@
 import { useState } from "react"
-import { Menu, Share2, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import BrandLockup from "@/components/Brand"
+import ThemeToggle from "@/components/ThemeToggle"
 
 const navLinks = [
   { label: "How it works", href: "#how-it-works" },
