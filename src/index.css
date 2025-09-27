@@ -134,6 +134,7 @@
   }
 }
 
+/* Typography helpers */
 .metamorphous-regular {
   font-family: "Metamorphous", serif;
   font-weight: 400;
@@ -145,3 +146,16 @@
   font-weight: 600;
   font-style: normal;
 }
+
+/* Micro-interactions */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up .6s both; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
