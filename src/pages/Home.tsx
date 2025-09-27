@@ -22,7 +22,7 @@ function Home() {
               <h1 className="merriweather-heading text-3xl md:text-4xl font-semibold text-black dark:text-white">
                 Share Large Files. Simply
               </h1>
-              <p className="metamorphous-regular text-base md:text-lg text-black/80 leading-relaxed">
+              <p className="metamorphous-regular text-base md:text-lg text-black/80 dark:text-white/80 leading-relaxed">
                 Transfer files too big for email or messages. Fast, secure, and no registration required.
               </p>
             </section>
