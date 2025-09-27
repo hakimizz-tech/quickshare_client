@@ -13,7 +13,7 @@ function Home() {
     <div className="relative min-h-screen">
       <div className="min-h-[100vh] w-full bg-white dark:bg-black transition-colors flex flex-col">
         <Header />
-        <Toaster position="top-center" richColors closeButton />
+        <Toaster position="top-center" closeButton />
 
         <div className="w-full max-w-4xl mx-auto px-4 md:px-6">
           <main className="rounded-3xl bg-transparent flex flex-col justify-start items-center py-8 md:py-12 text-black dark:text-white">
