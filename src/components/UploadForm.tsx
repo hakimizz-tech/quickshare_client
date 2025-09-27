@@ -201,7 +201,6 @@ function UploadForm() {
       setDownloadUrl(outcome.downloadUrl)
       toast.success("Upload complete! Your download link is ready.")
     } catch (error) {
-      // The hook already exposes the error state for UI display; optional console for debugging.
       if (import.meta.env.DEV) {
         console.error("Upload failed", error)
       }
@@ -210,18 +209,19 @@ function UploadForm() {
   })
 
   return (
-    <div className="mt-10 flex flex-col items-center gap-6 md:items-start">
-      {/* Dropzone that handles drag-and-drop interactions and previews the chosen file */}
+    <div className="mt-6 md:mt-10 flex flex-col items-center gap-6 md:items-start animate-fade-in-up">
+      {/* Dropzone */}
       <div
         className={`flex w-full max-w-md flex-col items-center justify-center rounded-[10px] border border-black bg-[#F3E9E9] p-6 text-center transition ${isDragActive ? "border-dashed" : ""}`}
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        aria-label="File upload dropzone"
       >
         {files.length === 0 ? (
           <>
-            <CloudUpload className="h-[200px] w-[200px] text-black" strokeWidth={1.2} />
+            <CloudUpload className="h-[200px] w-[200px] text-black animate-float" strokeWidth={1.2} />
             <span className="mt-4 text-xl font-semibold text-black">Drag &amp; Drop</span>
             <p className="mt-2 text-sm text-black/70">Allowing users to drag and drop files</p>
           </>
@@ -242,8 +242,8 @@ function UploadForm() {
         <input ref={fileInputRef} type="file" className="hidden" onChange={handleInputChange} />
       </form>
 
-      {/* Validation messages give quick feedback after schema checks */}
-      <div className="w-full max-w-md text-sm text-red-600">
+      {/* Validation messages */}
+      <div className="w-full max-w-md text-sm text-red-600 space-y-1">
         {errors.fileName?.message && <p>{errors.fileName.message}</p>}
         {!errors.fileName?.message && (errors.totalSize?.message || errors.totalChunks?.message) && (
           <p>{errors.totalSize?.message ?? errors.totalChunks?.message}</p>
@@ -252,9 +252,9 @@ function UploadForm() {
         {uploadError && <p>{uploadError}</p>}
       </div>
 
-      {/* Upload progress and result feedback */}
+      {/* Upload progress and result */}
       {(progress || downloadUrl) && (
-  <div className="w-full max-w-md space-y-4 text-sm text-black" aria-live="polite">
+        <div className="w-full max-w-md space-y-4 text-sm text-black" aria-live="polite">
           {progress && (
             <div className="space-y-2 rounded-lg border border-black/10 bg-white p-4 shadow-sm">
               <div className="flex items-center justify-between text-xs font-medium uppercase tracking-wide text-black/60">
@@ -271,10 +271,8 @@ function UploadForm() {
             </div>
           )}
           {downloadUrl && (
-            /* Success state: display the generated download URL with an affordance to copy it. */
             <div className="space-y-3 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800 shadow-sm">
               <p className="text-sm font-medium">Upload complete! Share your link below:</p>
-              {/* Read-only text box mirrors the live download URL so users can review it. */}
               <div className="flex items-center gap-2">
                 <input
                   type="text"
@@ -282,7 +280,6 @@ function UploadForm() {
                   readOnly
                   className="flex-1 truncate rounded-md border border-green-200 bg-white/80 px-3 py-2 text-sm text-green-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400/60"
                 />
-                {/* Copy button triggers the clipboard helper to store the link. */}
                 <button
                   type="button"
                   onClick={handleCopyDownloadLink}
@@ -297,8 +294,8 @@ function UploadForm() {
         </div>
       )}
 
-      {/* Action buttons: trigger file picker or submit the validated metadata */}
-  <div className="flex w-full max-w-md flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
+      {/* Actions */}
+      <div className="flex w-full max-w-md flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
         <button
           type="button"
           onClick={handleSelectFile}
