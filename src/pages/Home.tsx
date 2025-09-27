@@ -3,7 +3,7 @@ import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
 import UploadForm from "@/components/UploadForm"
 import { Toaster } from "@/components/ui/sonner"
-import { CheckShield, Lock, Rocket, Share2, Zap } from "lucide-react"
+import { ShieldCheck, Lock, Rocket, Share2, Zap } from "lucide-react"
 
 /**
  * Home page shell: orchestrates the global layout, hero section, sidebar, and
