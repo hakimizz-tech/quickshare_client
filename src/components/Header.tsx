@@ -31,7 +31,7 @@ function Header() {
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.label}
