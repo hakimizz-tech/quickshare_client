@@ -106,7 +106,7 @@ function Home() {
             <section id="faqs" className="mt-12 w-full max-w-3xl animate-fade-in-up [animation-delay:600ms]">
               <h2 className="merriweather-heading text-2xl text-black mb-3">FAQs</h2>
               <ul className="space-y-2 text-sm text-black/80 metamorphous-regular">
-                <li className="flex items-start gap-2"><CheckShield className="h-4 w-4 mt-1" /> Is there a file size limit? Large files are supported with chunked uploads.</li>
+                <li className="flex items-start gap-2"><ShieldCheck className="h-4 w-4 mt-1" /> Is there a file size limit? Large files are supported with chunked uploads.</li>
                 <li className="flex items-start gap-2"><Lock className="h-4 w-4 mt-1" /> Do I need an account? No, just upload and share your link.</li>
                 <li className="flex items-start gap-2"><Rocket className="h-4 w-4 mt-1" /> What if my connection drops? Uploads resume from where they left off.</li>
               </ul>
