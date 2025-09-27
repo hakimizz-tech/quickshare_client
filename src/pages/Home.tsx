@@ -19,7 +19,7 @@ function Home() {
           <main className="rounded-3xl bg-transparent flex flex-col justify-start items-center py-8 md:py-12 text-black dark:text-white">
             {/* Hero copy */}
             <section className="flex w-full max-w-2xl flex-col items-center text-center gap-4 animate-fade-in-up">
-              <h1 className="merriweather-heading text-3xl md:text-4xl font-semibold text-black">
+              <h1 className="merriweather-heading text-3xl md:text-4xl font-semibold text-black dark:text-white">
                 Share Large Files. Simply
               </h1>
               <p className="metamorphous-regular text-base md:text-lg text-black/80 leading-relaxed">
