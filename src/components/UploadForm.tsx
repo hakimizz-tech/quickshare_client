@@ -212,7 +212,7 @@ function UploadForm() {
     <div className="mt-6 md:mt-10 flex flex-col items-center gap-6 md:items-start animate-fade-in-up">
       {/* Dropzone */}
       <div
-        className={`flex w-full max-w-md flex-col items-center justify-center rounded-[10px] border border-black bg-[#F3E9E9] p-6 text-center transition ${isDragActive ? "border-dashed" : ""}`}
+        className={`flex w-full max-w-md flex-col items-center justify-center rounded-[10px] border border-black dark:border-white bg-white dark:bg-black p-6 text-center transition ${isDragActive ? "border-dashed" : ""}`}
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
